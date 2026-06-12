@@ -65,6 +65,38 @@ class Items{
         }
     }
 
+    int GetPointCount(){
+        float targetTimeSetting = saveData.settings.targetTimeSetting;
+        if (targetTimeSetting < 1.0){
+            return bronzeMedals * 10;
+        }else if (targetTimeSetting < 2.0){
+            pointCount = silverMedals * 7 + bronzeMedals * 3
+            return pointCount;
+        }else if (targetTimeSetting < 3.0){
+            pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2
+            return pointCount;
+        }else {
+            pointCount = authorMedals*5 + goldMedals*3 + silverMedals*1 + bronzeMedals*1
+            return pointCount;;
+        }
+    }
+
+    int GetEqualizedPointCount(){
+        float targetTimeSetting = saveData.settings.targetTimeSetting;
+        if (targetTimeSetting < 1.0){
+            return bronzeMedals * 12;
+        }else if (targetTimeSetting < 2.0){
+            pointCount = (silverMedals + bronzeMedals) * 6
+            return pointCount;
+        }else if (targetTimeSetting < 3.0){
+            pointCount = (goldMedals + silverMedals + bronzeMedals) * 4 
+            return pointCount;
+        }else {
+            pointCount = (authorMedals + goldMedals + silverMedals + bronzeMedals) * 3
+            return pointCount;;
+        }
+    }
+
     void AddItem (int itemID, int itemCount = 1) {
         switch (itemID){
             case ItemTypes::BronzeMedal:
