@@ -6,6 +6,7 @@ class YamlSettings{
     bool silverDisabled;
     bool goldDisabled;
     bool authorDisabled;
+    int pointSystem; 
 
     YamlSettings() {
         targetTimeSetting = 0.0;
@@ -44,6 +45,7 @@ class YamlSettings{
         Json::Value json = Json::Object();
         try {
             json["targetTimeSetting"] = targetTimeSetting;
+            json["pointSystem"] = pointSystem;
             json["discountAmount"] = discountAmount;
             json["seriesCount"] = seriesCount;
             json["bronzeDisabled"] = bronzeDisabled;
@@ -59,6 +61,7 @@ class YamlSettings{
     void ReadSlotData(const Json::Value &in json){
         seriesCount = json["SeriesNumber"];
         targetTimeSetting = json["TargetTimeSetting"];
+        pointSystem = json["PointSystem"]
         discountAmount = json.Get("DiscountAmount",0.015);
         bronzeDisabled = JsonGetAsBool(json, "DisableBronze");
         silverDisabled = JsonGetAsBool(json, "DisableSilver");
@@ -68,6 +71,7 @@ class YamlSettings{
 
     void ReadJsonV1_2(const Json::Value &in json){
         targetTimeSetting = json["targetTimeSetting"];
+        pointSystem = json["pointSystem"]
         discountAmount = json["discountAmount"];
         seriesCount = json["seriesCount"];
         bronzeDisabled = JsonGetAsBool(json, "bronzeDisabled");
