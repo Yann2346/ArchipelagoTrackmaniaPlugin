@@ -93,7 +93,7 @@ class Items{
             return pointCount;
         }else {
             pointCount = (authorMedals + goldMedals + silverMedals + bronzeMedals) * 3
-            return pointCount;;
+            return pointCount;
         }
     }
 

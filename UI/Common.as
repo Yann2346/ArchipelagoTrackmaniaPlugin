@@ -88,6 +88,54 @@ void RenderMedalProgress(UI::Texture@ tex, float size, int count, int total){
     UI::PopFont();
 }
 
+void RenderProgression(int nextSeries){
+    if data.settings.progressionSystem == 0:
+        int count = data.items.GetProgressionMedalCount();
+        int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
+        int size = 60;
+        float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+        MoveCursor(vec2(medalOffset,-15.0));
+        RenderMedalProgress(GetProgressionTex(),size,count,total);
+        MoveCursor(vec2(-medalOffset,-15.0));
+    
+    targetTimeSetting = data.settings.targetTimeSetting;
+    if data.settings.progressionSystem == 1:
+        if targetTimeSetting < 1:
+            int count = data.items.GetProgressionMedalCount();
+            int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
+            int size = 60;
+            float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+            MoveCursor(vec2(medalOffset,-15.0));
+            RenderMedalProgress(GetProgressionTex(),size,count,total);
+            MoveCursor(vec2(-medalOffset,-15.0));
+        if targetTimeSetting < 2:
+        if targetTimeSetting < 3:
+        else:
+
+    if data.settings.progressionSystem == 2: 
+        if targetTimeSetting < 1:
+            int count = data.items.GetProgressionMedalCount();
+            int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
+            int size = 60;
+            float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+            MoveCursor(vec2(medalOffset,-15.0));
+            RenderMedalProgress(GetProgressionTex(),size,count,total);
+            MoveCursor(vec2(-medalOffset,-15.0));
+        if targetTimeSetting < 2:
+        if targetTimeSetting < 3:
+        else:
+
+
+    // default just in case
+    int count = data.items.GetProgressionMedalCount();
+    int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
+    int size = 60;
+    float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+    MoveCursor(vec2(medalOffset,-15.0));
+    RenderMedalProgress(GetProgressionTex(),size,count,total);
+    MoveCursor(vec2(-medalOffset,-15.0));
+}
+
 void RenderTextCentered(const string &in text, UI::Font@ font, int fontSize){
     vec2 size = UI::MeasureString(text, font, fontSize);
     MoveCursor(size/-2);
