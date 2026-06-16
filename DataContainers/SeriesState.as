@@ -50,13 +50,13 @@ class SeriesState{
     }
 
     bool IsUnlocked(){
-        if data.settings.progressionSystem == 0:
+        if saveData.settings.progressionSystem == 0:
             return medalRequirement <= data.items.GetProgressionMedalCount();
         
-        if data.settings.progressionSystem == 1:
+        if saveData.settings.progressionSystem == 1:
             return medalRequirement * 12 <= data.items.GetEqualizedPointCount();
 
-        if data.settings.progressionSystem == 2:
+        if saveData.settings.progressionSystem == 2:
             return medalRequirement * 10 <= data.items.GetPointCount();
         
         // default just in case
