@@ -65,17 +65,22 @@ class SaveData{
 
     int LatestUnlockedSeriesI(){
         int index = 0;
-        if settings.progressionSystem == 0:
+        if (settings.progressionSystem == 0){
             int pointCount = items.GetProgressionMedalCount();
+        }
 
-        if settings.progressionSystem == 1:
+        if (settings.progressionSystem == 1){
             int pointCount = items.GetEqualizedPointCount
+        }
 
-        if settings.progressionSystem == 2:
+        if (settings.progressionSystem == 2){
             int pointCount = items.GetPointCount
+        }
         
         // default just in case
-        int pointCount = items.GetProgressionMedalCount();
+        else{
+            int pointCount = items.GetProgressionMedalCount();
+        }
         
         for (uint i = 0; i < world.Length; i++){
             if (world[i].IsUnlocked()){
