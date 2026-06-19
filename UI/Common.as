@@ -90,7 +90,7 @@ void RenderMedalProgress(UI::Texture@ tex, float size, int count, int total){
 
 void RenderMedalPossession(array<UI::Texture@> textures, float size, array<int> medalCounts){
     float texSize = size;
-    for (int i = 0; i < textures.Length; i++){
+    for (uint i = 0; i < textures.Length; i++){
         UI::Image(textures[i],vec2(texSize,texSize));
         UI::SameLine();
         UI::PushFont(fontHeaderSub);
