@@ -70,14 +70,14 @@ class Items{
         if (targetTimeSetting < 1.0){
             return bronzeMedals * 10;
         }else if (targetTimeSetting < 2.0){
-            pointCount = silverMedals * 7 + bronzeMedals * 3
+            pointCount = silverMedals * 7 + bronzeMedals * 3;
             return pointCount;
         }else if (targetTimeSetting < 3.0){
-            pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2
+            pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2;
             return pointCount;
         }else {
-            pointCount = authorMedals*5 + goldMedals*3 + silverMedals*1 + bronzeMedals*1
-            return pointCount;;
+            pointCount = authorMedals*5 + goldMedals*3 + silverMedals*1 + bronzeMedals*1;
+            return pointCount;
         }
     }
 
@@ -86,13 +86,13 @@ class Items{
         if (targetTimeSetting < 1.0){
             return bronzeMedals * 12;
         }else if (targetTimeSetting < 2.0){
-            pointCount = (silverMedals + bronzeMedals) * 6
+            pointCount = (silverMedals + bronzeMedals) * 6;
             return pointCount;
         }else if (targetTimeSetting < 3.0){
-            pointCount = (goldMedals + silverMedals + bronzeMedals) * 4 
+            pointCount = (goldMedals + silverMedals + bronzeMedals) * 4;
             return pointCount;
         }else {
-            pointCount = (authorMedals + goldMedals + silverMedals + bronzeMedals) * 3
+            pointCount = (authorMedals + goldMedals + silverMedals + bronzeMedals) * 3;
             return pointCount;
         }
     }

@@ -110,7 +110,7 @@ void RenderScore(int score, int pointRequirement){
     UI::PopFont();
 }
 
-void RenderProgression(uint nextSeries){
+void RenderProgression(uint nextSeries, vec2 viewSize){
     int size = 60;
     if (data.settings.progressionSystem == 0){
         int count = data.items.GetProgressionMedalCount();
@@ -135,7 +135,7 @@ void RenderProgression(uint nextSeries){
     
         if (targetTimeSetting < 2.0){
             int countBronze = data.items.bronzeMedals;
-            int countSilver = GetProgressionMedalCount();
+            int countSilver = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
@@ -155,7 +155,7 @@ void RenderProgression(uint nextSeries){
         if (targetTimeSetting < 3.0){
             int countBronze = data.items.bronzeMedals;
             int countSilver = data.items.silverMedals;
-            int countGold = GetProgressionMedalCount();
+            int countGold = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
@@ -176,7 +176,7 @@ void RenderProgression(uint nextSeries){
             int countBronze = data.items.bronzeMedals;
             int countSilver = data.items.silverMedals;
             int countGold = data.items.goldMedals;
-            int countAuthor = GetProgressionMedalCount();
+            int countAuthor = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
@@ -206,7 +206,7 @@ void RenderProgression(uint nextSeries){
         }
         if (targetTimeSetting < 2.0){
             int countBronze = data.items.bronzeMedals;
-            int countSilver = GetProgressionMedalCount();
+            int countSilver = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
@@ -226,7 +226,7 @@ void RenderProgression(uint nextSeries){
         if (targetTimeSetting < 3.0){
             int countBronze = data.items.bronzeMedals;
             int countSilver = data.items.silverMedals;
-            int countGold = GetProgressionMedalCount();
+            int countGold = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
@@ -247,7 +247,7 @@ void RenderProgression(uint nextSeries){
             int countBronze = data.items.bronzeMedals;
             int countSilver = data.items.silverMedals;
             int countGold = data.items.goldMedals;
-            int countAuthor = GetProgressionMedalCount();
+            int countAuthor = data.items.GetProgressionMedalCount();
 
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
@@ -279,23 +279,23 @@ void RenderProgression(uint nextSeries){
     }
 }
 
-void RenderVictory(){
+void RenderVictory(vec2 viewSize){
     if (data.settings.progressionSystem == 0){
-        int score = data.GetProgressionMedalCount()
-        int pointRequirement = data.victoryRequirement
+        int score = data.items.GetProgressionMedalCount();
+        int pointRequirement = data.victoryRequirement;
     }
     if (data.settings.progressionSystem == 1){
-        int score = data.GetEqualizedPointCount()
-        int pointRequirement = data.victoryRequirement * 12
+        int score = data.GetEqualizedPointCount();
+        int pointRequirement = data.victoryRequirement * 12;
     }
     if (data.settings.progressionSystem == 2){
-        int score = data.GetPointCount()
-        int pointRequirement = data.victoryRequirement * 10
+        int score = data.GetPointCount();
+        int pointRequirement = data.victoryRequirement * 10;
     }
     // default just in case
     else{
-        int score = data.GetProgressionMedalCount()
-        int pointRequirement = data.victoryRequirement
+        int score = data.items.GetProgressionMedalCount();
+        int pointRequirement = data.victoryRequirement;
     }
     MoveCursor(vec2(0,10));
     string text = "Victory";

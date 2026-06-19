@@ -145,12 +145,12 @@ void RenderMainMenu(){
 
                 uint nextSeries = i+1;
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
-                RenderProgression(nextSeries);
+                RenderProgression(nextSeries, viewSize);
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
                 MoveCursor(vec2(0,-32));
                 if (nextSeries >= data.world.Length){
-                    RenderVictory()
+                    RenderVictory(viewSize);
                 }
             }
             UI::EndChild();

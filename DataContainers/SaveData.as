@@ -70,11 +70,11 @@ class SaveData{
         }
 
         if (settings.progressionSystem == 1){
-            int pointCount = items.GetEqualizedPointCount
+            int pointCount = items.GetEqualizedPointCount;
         }
 
         if (settings.progressionSystem == 2){
-            int pointCount = items.GetPointCount
+            int pointCount = items.GetPointCount;
         }
         
         // default just in case
