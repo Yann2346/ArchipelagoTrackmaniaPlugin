@@ -285,11 +285,11 @@ void RenderVictory(vec2 viewSize){
         int pointRequirement = data.victoryRequirement;
     }
     if (data.settings.progressionSystem == 1){
-        int score = data.GetEqualizedPointCount();
+        int score = data.items.GetEqualizedPointCount();
         int pointRequirement = data.victoryRequirement * 12;
     }
     if (data.settings.progressionSystem == 2){
-        int score = data.GetPointCount();
+        int score = data.items.GetPointCount();
         int pointRequirement = data.victoryRequirement * 10;
     }
     // default just in case
