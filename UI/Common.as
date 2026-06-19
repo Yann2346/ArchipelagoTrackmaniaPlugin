@@ -110,7 +110,7 @@ void RenderScore(int score, int pointRequirement){
     UI::PopFont();
 }
 
-void RenderProgression(int nextSeries){
+void RenderProgression(uint nextSeries){
     int size = 60;
     if (data.settings.progressionSystem == 0){
         int count = data.items.GetProgressionMedalCount();
@@ -195,7 +195,7 @@ void RenderProgression(int nextSeries){
         }
     }
 
-    if data.settings.progressionSystem == 2: 
+    if (data.settings.progressionSystem == 2){
         if (targetTimeSetting < 1.0){
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
@@ -264,6 +264,7 @@ void RenderProgression(int nextSeries){
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
         }
+    }
 
 
     // default just in case
@@ -276,6 +277,43 @@ void RenderProgression(int nextSeries){
         RenderMedalProgress(GetProgressionTex(),size,count,total);
         MoveCursor(vec2(-medalOffset,-15.0));
     }
+}
+
+void RenderVictory(){
+    if (data.settings.progressionSystem == 0){
+        int score = data.GetProgressionMedalCount()
+        int pointRequirement = data.victoryRequirement
+    }
+    if (data.settings.progressionSystem == 1){
+        int score = data.GetEqualizedPointCount()
+        int pointRequirement = data.victoryRequirement * 12
+    }
+    if (data.settings.progressionSystem == 2){
+        int score = data.GetPointCount()
+        int pointRequirement = data.victoryRequirement * 10
+    }
+    // default just in case
+    else{
+        int score = data.GetProgressionMedalCount()
+        int pointRequirement = data.victoryRequirement
+    }
+    MoveCursor(vec2(0,10));
+    string text = "Victory";
+    if (score >= pointRequirement) text = "Victory!!!!! :D";
+    UI::PushFont(fontHeader);
+    vec4 color = vec4(0.5,0.5,0.5,1.0);
+    if (score >= pointRequirement){
+        color = (vec4(0.0,1.0,0.1,1.0));
+    }
+    UI::PushStyleColor(UI::Col::Text,color);
+    vec2 stringSize = UI::MeasureString(text,fontHeader);
+    float textOffset = (viewSize.x/2)-(stringSize.x/2);
+    MoveCursor(vec2(textOffset,0.0));
+    UI::Text(text);
+    MoveCursor(vec2(-textOffset,0.0));
+    UI::PopStyleColor();
+    UI::PopFont();
+    UI::NewLine();
 }
 
 void RenderTextCentered(const string &in text, UI::Font@ font, int fontSize){

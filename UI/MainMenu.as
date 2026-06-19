@@ -144,35 +144,13 @@ void RenderMainMenu(){
                 MoveCursor(vec2(0,manMarn));
 
                 uint nextSeries = i+1;
-                int count = data.items.GetProgressionMedalCount();
-                int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-                int size = 60;
-                float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
-                MoveCursor(vec2(medalOffset,-15.0));
-                RenderMedalProgress(GetProgressionTex(),size,count,total);
-                MoveCursor(vec2(-medalOffset,-15.0));
+                RenderProgression(nextSeries);
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
                 MoveCursor(vec2(0,-32));
                 if (nextSeries >= data.world.Length){
-                    MoveCursor(vec2(0,10));
-                    string text = "Victory";
-                    if (count >= total) text = "Victory!!!!! :D";
-                    UI::PushFont(fontHeader);
-                    vec4 color = vec4(0.5,0.5,0.5,1.0);
-                    if (count >= total){
-                        color = (vec4(0.0,1.0,0.1,1.0));
-                    }
-                    UI::PushStyleColor(UI::Col::Text,color);
-                    vec2 stringSize = UI::MeasureString(text,fontHeader);
-                    float textOffset = (viewSize.x/2)-(stringSize.x/2);
-                    MoveCursor(vec2(textOffset,0.0));
-                    UI::Text(text);
-                    MoveCursor(vec2(-textOffset,0.0));
-                    UI::PopStyleColor();
-                    UI::PopFont();
-                    UI::NewLine();
+                    RenderVictory()
                 }
             }
             UI::EndChild();
