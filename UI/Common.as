@@ -78,8 +78,8 @@ void RenderInventory(){
     UI::EndTable();
 }
 
-void RenderMedalProgress(UI::Texture@ tex, float size, int count, int total){
-    float texSize = size;
+void RenderMedalProgress(UI::Texture@ tex, float sizeMedal, int count, int total){
+    float texSize = sizeMedal;
     UI::Image(tex,vec2(texSize,texSize));
     UI::SameLine();
     UI::PushFont(fontHeaderSub);
@@ -88,8 +88,8 @@ void RenderMedalProgress(UI::Texture@ tex, float size, int count, int total){
     UI::PopFont();
 }
 
-void RenderMedalPossession(array<UI::Texture@> textures, float size, array<int> medalCounts){
-    float texSize = size;
+void RenderMedalPossession(array<UI::Texture@> textures, float sizeMedal, array<int> medalCounts){
+    float texSize = sizeMedal;
     for (uint i = 0; i < textures.Length; i++){
         UI::Image(textures[i],vec2(texSize,texSize));
         UI::SameLine();
@@ -111,13 +111,13 @@ void RenderScore(int score, int pointRequirement){
 }
 
 void RenderProgression(uint nextSeries, vec2 viewSize){
-    int size = 60;
+    int sizeMedal = 60;
     if (data.settings.progressionSystem == 0){
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-        float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+        float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
         MoveCursor(vec2(medalOffset,-15.0));
-        RenderMedalProgress(GetProgressionTex(),size,count,total);
+        RenderMedalProgress(GetProgressionTex(),sizeMedal,count,total);
         MoveCursor(vec2(-medalOffset,-15.0));
     }
 
@@ -127,9 +127,9 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
         if (targetTimeSetting < 1.0){
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-            float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalProgress(GetProgressionTex(),size,count,total);
+            RenderMedalProgress(GetProgressionTex(),sizeMedal,count,total);
             MoveCursor(vec2(-medalOffset,-15.0));
         }
     
@@ -140,11 +140,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*2 + UI::MeasureString(""+countBronze+" "+countSilver,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countBronze+" "+countSilver,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex};
             array<int> medalCounts = {countBronze, countSilver};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -160,11 +160,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex};
             array<int> medalCounts = {countBronze, countSilver, countGold};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -181,11 +181,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 12 : data.victoryRequirement * 12;
             int score = data.items.GetEqualizedPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*4 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*4 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex, authorTex};
             array<int> medalCounts = {countBronze, countSilver, countGold, countAuthor};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -199,9 +199,9 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
         if (targetTimeSetting < 1.0){
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-            float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalProgress(GetProgressionTex(),size,count,total);
+            RenderMedalProgress(GetProgressionTex(),sizeMedal,count,total);
             MoveCursor(vec2(-medalOffset,-15.0));
         }
         if (targetTimeSetting < 2.0){
@@ -211,11 +211,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*2 + UI::MeasureString(""+countBronze+" "+countSilver,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countBronze+" "+countSilver,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex};
             array<int> medalCounts = {countBronze, countSilver};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -231,11 +231,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex};
             array<int> medalCounts = {countBronze, countSilver, countGold};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -252,11 +252,11 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
             int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
             int score = data.items.GetPointCount();
 
-            float medalOffset = (viewSize.x/2)-((size*4 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
+            float medalOffset = (viewSize.x/2)-((sizeMedal*4 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
             array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex, authorTex};
             array<int> medalCounts = {countBronze, countSilver, countGold, countAuthor};
             MoveCursor(vec2(medalOffset,-15.0));
-            RenderMedalPossession(textures, size, medalCounts);
+            RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
             float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -271,32 +271,32 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
     else {
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-        int size = 60;
-        float medalOffset = (viewSize.x/2)-((size+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
+        int sizeMedal = 60;
+        float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
         MoveCursor(vec2(medalOffset,-15.0));
-        RenderMedalProgress(GetProgressionTex(),size,count,total);
+        RenderMedalProgress(GetProgressionTex(),sizeMedal,count,total);
         MoveCursor(vec2(-medalOffset,-15.0));
     }
 }
 
 void RenderVictory(vec2 viewSize){
+    // default just in case
+    int score = data.items.GetProgressionMedalCount();
+    int pointRequirement = data.victoryRequirement;
+    
     if (data.settings.progressionSystem == 0){
-        int score = data.items.GetProgressionMedalCount();
-        int pointRequirement = data.victoryRequirement;
+        score = data.items.GetProgressionMedalCount();
+        pointRequirement = data.victoryRequirement;
     }
     if (data.settings.progressionSystem == 1){
-        int score = data.items.GetEqualizedPointCount();
-        int pointRequirement = data.victoryRequirement * 12;
+        score = data.items.GetEqualizedPointCount();
+        pointRequirement = data.victoryRequirement * 12;
     }
     if (data.settings.progressionSystem == 2){
-        int score = data.items.GetPointCount();
-        int pointRequirement = data.victoryRequirement * 10;
+        score = data.items.GetPointCount();
+        pointRequirement = data.victoryRequirement * 10;
     }
-    // default just in case
-    else{
-        int score = data.items.GetProgressionMedalCount();
-        int pointRequirement = data.victoryRequirement;
-    }
+    
     MoveCursor(vec2(0,10));
     string text = "Victory";
     if (score >= pointRequirement) text = "Victory!!!!! :D";
