@@ -72,7 +72,7 @@ void RenderMapUI(){
             UI::Separator();
 
             //UI::Indent();
-            RenderProgression(data.world.Length, vec2(210, 50), 20);
+            RenderProgression(data.world.Length, vec2(100, 0), 20);
             //UI::Unindent();
             UI::Separator();
             
