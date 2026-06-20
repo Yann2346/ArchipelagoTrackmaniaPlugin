@@ -105,13 +105,13 @@ void RenderMedalPossession(array<UI::Texture@> textures, float sizeMedal, array<
 }
 
 void RenderScore(int score, int pointRequirement){
+    UI::NewLine();
     UI::PushFont(fontHeaderSub);
     UI::Text(""+score+"/"+pointRequirement);
     UI::PopFont();
 }
 
-void RenderProgression(uint nextSeries, vec2 viewSize){
-    int sizeMedal = 60;
+void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
     if (data.settings.progressionSystem == 0){
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
@@ -271,7 +271,6 @@ void RenderProgression(uint nextSeries, vec2 viewSize){
     else {
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
-        int sizeMedal = 60;
         float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
         MoveCursor(vec2(medalOffset,-15.0));
         RenderMedalProgress(GetProgressionTex(),sizeMedal,count,total);

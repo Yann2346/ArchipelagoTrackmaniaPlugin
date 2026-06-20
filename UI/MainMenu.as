@@ -145,12 +145,13 @@ void RenderMainMenu(){
 
                 uint nextSeries = i+1;
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
-                RenderProgression(nextSeries, viewSize);
+                RenderProgression(nextSeries, viewSize, 60);
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
                 MoveCursor(vec2(0,-32));
                 if (nextSeries >= data.world.Length){
                     RenderVictory(viewSize);
+
                 }
             }
             UI::EndChild();
@@ -290,7 +291,7 @@ void RenderMainMenuThumbnail(){
 
                 uint nextSeries = i+1;
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
-                RenderProgression(nextSeries, viewSize);
+                RenderProgression(nextSeries, viewSize, 60);
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
                 if (nextSeries >= data.world.Length){

@@ -71,11 +71,11 @@ void RenderMapUI(){
             MoveCursor(vec2(0.0,2.0));
             UI::Separator();
 
-            int total = data.victoryRequirement;
             UI::Indent();
-            RenderMedalProgress(GetProgressionTex(), 60,data.items.GetProgressionMedalCount(), total);
+            RenderProgression(data.world.Length, vec2(210, 310), 20);
             UI::Unindent();
             UI::Separator();
+            
 
             bool gotAllChecks = data.locations.GotAllChecks(loadedMap.seriesIndex, loadedMap.mapIndex);
             int skipsAvailable = data.items.skips - data.items.skipsUsed;
