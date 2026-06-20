@@ -105,9 +105,8 @@ void RenderMedalPossession(array<UI::Texture@> textures, float sizeMedal, array<
 }
 
 void RenderScore(int score, int pointRequirement){
-    UI::NewLine();
     UI::PushFont(fontHeaderSub);
-    UI::Text(""+score+"/"+pointRequirement);
+    UI::Text(""+"Score : "+score+"/"+pointRequirement);
     UI::PopFont();
 }
 
@@ -147,7 +146,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
@@ -167,7 +167,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
@@ -188,7 +189,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
@@ -218,7 +220,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
@@ -238,7 +241,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
@@ -259,7 +263,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             RenderMedalPossession(textures, sizeMedal, medalCounts);
             MoveCursor(vec2(-medalOffset,-15.0));
 
-            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            float scoreOffset = (viewSize.x/2)-((UI::MeasureString(""+"Score : "+score+"/"+pointRequirement,fontHeaderSub).x)/2+16*UI::GetScale());
+            UI::NewLine();
             MoveCursor(vec2(scoreOffset,-15.0));
             RenderScore(score, pointRequirement);
             MoveCursor(vec2(-scoreOffset,-15.0));
