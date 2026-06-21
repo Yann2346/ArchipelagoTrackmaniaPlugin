@@ -7,6 +7,10 @@ class YamlSettings{
     bool silverDisabled;
     bool goldDisabled;
     bool authorDisabled;
+    bool goldMedalsDisabled;
+    bool silverMedalsDisabled;
+    bool bronzeMedalsDisabled;
+
      
 
     YamlSettings() {
@@ -53,6 +57,9 @@ class YamlSettings{
             json["silverDisabled"] = silverDisabled;
             json["goldDisabled"] = goldDisabled;
             json["authorDisabled"] = authorDisabled;
+            json["goldMedalsDisabled"] = goldMedalsDisabled;
+            json["silverMedalsDisabled"] = silverMedalsDisabled;
+            json["bronzeMedalsDisabled"] = bronzeMedalsDisabled;
         } catch {
             Log::Error("Error converting Yaml Settings to JSON");
         }
@@ -68,6 +75,9 @@ class YamlSettings{
         silverDisabled = JsonGetAsBool(json, "DisableSilver");
         goldDisabled = JsonGetAsBool(json, "DisableGold");
         authorDisabled = JsonGetAsBool(json, "DisableAuthor");
+        goldMedalsDisabled = JsonGetAsBool(json, "DisableGoldMedals");
+        silverMedalsDisabled = JsonGetAsBool(json, "DisableSilverMedals");
+        bronzeMedalsDisabled = JsonGetAsBool(json, "DisableBronzeMedals");
     }
 
     void ReadJsonV1_2(const Json::Value &in json){
@@ -79,5 +89,8 @@ class YamlSettings{
         silverDisabled = JsonGetAsBool(json, "silverDisabled");
         goldDisabled = JsonGetAsBool(json, "goldDisabled");
         authorDisabled = JsonGetAsBool(json, "authorDisabled");
+        goldMedalsDisabled = JsonGetAsBool(json, "DisableGoldMedals");
+        silverMedalsDisabled = JsonGetAsBool(json, "DisableSilverMedals");
+        bronzeMedalsDisabled = JsonGetAsBool(json, "DisableBronzeMedals");
     }
 }
