@@ -89,11 +89,11 @@ class Items{
                     return goldMedals * 10;
                 }
                 int pointCount = goldMedals * 7 + silverMedals * 3;
-                return pointCount
+                return pointCount;
             }
             else if (silverMedalsDisabled){
                 int pointCount = goldMedals * 7 + bronzeMedals * 3;
-                return pointCount
+                return pointCount;
             }
             else {
                 int pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2;
@@ -107,11 +107,11 @@ class Items{
                         return authorMedals * 10;
                     }
                     int pointCount = authorMedals * 7 + goldMedals * 3;
-                    return pointCount
+                    return pointCount;
                 }
                 if (goldMedalsDisabled){
                     int pointCount = authorMedals * 7 + silverMedals * 3;
-                    return pointCount
+                    return pointCount;
                 }
                 int pointCount = authorMedals * 5 + goldMedals * 3 + silverMedals * 2;
                 return pointCount;
@@ -119,7 +119,7 @@ class Items{
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled) {
                     int pointCount = authorMedals * 7 + bronzeMedals * 3;
-                    return pointCount
+                    return pointCount;
                 }
                 int pointCount = authorMedals * 5 + goldMedals * 3 + bronzeMedals * 2;
                 return pointCount;
@@ -159,11 +159,11 @@ class Items{
                     return goldMedals * 12;
                 }
                 int pointCount = goldMedals * 6 + silverMedals * 6;
-                return pointCount
+                return pointCount;
             }
             else if (silverMedalsDisabled){
                 int pointCount = goldMedals * 6 + bronzeMedals * 6;
-                return pointCount
+                return pointCount;
             }
             else {
                 int pointCount = goldMedals * 4 + silverMedals * 4 + bronzeMedals * 4;
@@ -177,11 +177,11 @@ class Items{
                         return authorMedals * 10;
                     }
                     int pointCount = authorMedals * 6 + goldMedals * 6;
-                    return pointCount
+                    return pointCount;
                 }
                 if (goldMedalsDisabled){
                     int pointCount = authorMedals * 6 + silverMedals * 6;
-                    return pointCount
+                    return pointCount;
                 }
                 int pointCount = authorMedals * 4 + goldMedals * 4 + silverMedals * 4;
                 return pointCount;
@@ -189,7 +189,7 @@ class Items{
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled) {
                     int pointCount = authorMedals * 6 + bronzeMedals * 6;
-                    return pointCount
+                    return pointCount;
                 }
                 int pointCount = authorMedals * 4 + goldMedals * 4 + bronzeMedals * 4;
                 return pointCount;

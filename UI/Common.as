@@ -122,9 +122,9 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
 
     float targetTimeSetting = data.settings.targetTimeSetting;
 
-    bool bronzeMedalsDisabled = saveData.settings.bronzeMedalsDisabled;
-    bool silverMedalsDisabled = saveData.settings.silverMedalsDisabled;
-    bool goldMedalsDisabled = saveData.settings.goldMedalsDisabled;
+    bool bronzeMedalsDisabled = data.settings.bronzeMedalsDisabled;
+    bool silverMedalsDisabled = data.settings.silverMedalsDisabled;
+    bool goldMedalsDisabled = data.settings.goldMedalsDisabled;
 
     if (data.settings.progressionSystem == 1){
         if (targetTimeSetting < 1.0){
@@ -437,7 +437,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 int countSilver = data.items.GetProgressionMedalCount();
 
                 int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                int score = data.items.GetPointCount;
+                int score = data.items.GetPointCount();
 
                 float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countBronze+" "+countSilver,fontHeaderSub).x)/2+16*UI::GetScale());
                 array<UI::Texture@> textures = {bronzeTex, silverTex};
@@ -469,7 +469,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     int countGold = data.items.GetProgressionMedalCount();
 
                     int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                    int score = data.items.GetPointCount;
+                    int score = data.items.GetPointCount();
 
                     float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
                     array<UI::Texture@> textures = {silverTex, goldTex};
@@ -491,7 +491,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 int countGold = data.items.GetProgressionMedalCount();
 
                 int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                int score = data.items.GetPointCount;
+                int score = data.items.GetPointCount();
 
                 float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countBronze+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
                 array<UI::Texture@> textures = {bronzeTex, goldTex};
@@ -513,7 +513,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 int countGold = data.items.GetProgressionMedalCount();
 
                 int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                int score = data.items.GetPointCount;
+                int score = data.items.GetPointCount();
 
                 float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold,fontHeaderSub).x)/2+16*UI::GetScale());
                 array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex};
@@ -546,7 +546,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                         int countAuthor = data.items.GetProgressionMedalCount();
 
                         int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                        int score = data.items.GetPointCount;
+                        int score = data.items.GetPointCount();
 
                         float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                         array<UI::Texture@> textures = {goldTex, authorTex};
@@ -568,7 +568,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     int countAuthor = data.items.GetProgressionMedalCount();
 
                     int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                    int score = data.items.GetPointCount;
+                    int score = data.items.GetPointCount();
 
                     float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countSilver+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                     array<UI::Texture@> textures = {silverTex, authorTex};
@@ -590,7 +590,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     int countAuthor = data.items.GetProgressionMedalCount();
 
                     int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                    int score = data.items.GetPointCount;
+                    int score = data.items.GetPointCount();
 
                     float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                     array<UI::Texture@> textures = {silverTex, goldTex, authorTex};
@@ -613,7 +613,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     int countAuthor = data.items.GetProgressionMedalCount();
 
                     int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                    int score = data.items.GetPointCount;
+                    int score = data.items.GetPointCount();
 
                     float medalOffset = (viewSize.x/2)-((sizeMedal*2 + UI::MeasureString(""+countBronze+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                     array<UI::Texture@> textures = {bronzeTex, authorTex};
@@ -635,7 +635,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     int countAuthor = data.items.GetProgressionMedalCount();
 
                     int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                    int score = data.items.GetPointCount;
+                    int score = data.items.GetPointCount();
 
                     float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countBronze+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                     array<UI::Texture@> textures = {bronzeTex, goldTex, authorTex};
@@ -658,7 +658,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 int countAuthor = data.items.GetProgressionMedalCount();
 
                 int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                int score = data.items.GetPointCount;
+                int score = data.items.GetPointCount();
 
                 float medalOffset = (viewSize.x/2)-((sizeMedal*3 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                 array<UI::Texture@> textures = {bronzeTex, silverTex, authorTex};
@@ -681,7 +681,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 int countAuthor = data.items.GetProgressionMedalCount();
 
                 int pointRequirement = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement * 10 : data.victoryRequirement * 10;
-                int score = data.items.GetPointCount;
+                int score = data.items.GetPointCount();
 
                 float medalOffset = (viewSize.x/2)-((sizeMedal*4 + UI::MeasureString(""+countBronze+" "+countSilver+" "+countGold+" "+countAuthor,fontHeaderSub).x)/2+16*UI::GetScale());
                 array<UI::Texture@> textures = {bronzeTex, silverTex, goldTex, authorTex};
