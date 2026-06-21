@@ -67,33 +67,141 @@ class Items{
 
     int GetPointCount(){
         float targetTimeSetting = saveData.settings.targetTimeSetting;
+        bool bronzeMedalsDisabled = saveData.settings.bronzeMedalsDisabled;
+        bool silverMedalsDisabled = saveData.settings.silverMedalsDisabled;
+        bool goldMedalsDisabled = saveData.settings.goldMedalsDisabled;
+
         if (targetTimeSetting < 1.0){
             return bronzeMedals * 10;
-        }else if (targetTimeSetting < 2.0){
-            int pointCount = silverMedals * 7 + bronzeMedals * 3;
-            return pointCount;
-        }else if (targetTimeSetting < 3.0){
-            int pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2;
-            return pointCount;
-        }else {
-            int pointCount = authorMedals*5 + goldMedals*3 + silverMedals*1 + bronzeMedals*1;
-            return pointCount;
+        }
+        else if (targetTimeSetting < 2.0){
+            if (bronzeMedalsDisabled) {
+                return silverMedals * 10;
+            }
+            else {
+                int pointCount = silverMedals * 7 + bronzeMedals * 3;
+                return pointCount;
+            }
+        }
+        else if (targetTimeSetting < 3.0){
+            if (bronzeMedalsDisabled){
+                if (silverMedalsDisabled){
+                    return goldMedals * 10;
+                }
+                int pointCount = goldMedals * 7 + silverMedals * 3;
+                return pointCount
+            }
+            else if (silverMedalsDisabled){
+                int pointCount = goldMedals * 7 + bronzeMedals * 3;
+                return pointCount
+            }
+            else {
+                int pointCount = goldMedals * 5 + silverMedals * 3 + bronzeMedals * 2;
+                return pointCount;
+            }
+        }
+        else {
+            if (bronzeMedalsDisabled){
+                if (silverMedalsDisabled){
+                    if (goldMedalsDisabled){
+                        return authorMedals * 10;
+                    }
+                    int pointCount = authorMedals * 7 + goldMedals * 3;
+                    return pointCount
+                }
+                if (goldMedalsDisabled){
+                    int pointCount = authorMedals * 7 + silverMedals * 3;
+                    return pointCount
+                }
+                int pointCount = authorMedals * 5 + goldMedals * 3 + silverMedals * 2;
+                return pointCount;
+            }
+            else if (silverMedalsDisabled){
+                if (goldMedalsDisabled) {
+                    int pointCount = authorMedals * 7 + bronzeMedals * 3;
+                    return pointCount
+                }
+                int pointCount = authorMedals * 5 + goldMedals * 3 + bronzeMedals * 2;
+                return pointCount;
+            }
+            else if (goldMedalsDisabled){
+                int pointCount = authorMedals * 5 + silverMedals * 3 + bronzeMedals * 2;
+                return pointCount;
+            }
+            else {
+                int pointCount = authorMedals*5 + goldMedals*3 + silverMedals*1 + bronzeMedals*1;
+                return pointCount;
+            }
         }
     }
 
     int GetEqualizedPointCount(){
         float targetTimeSetting = saveData.settings.targetTimeSetting;
+        bool bronzeMedalsDisabled = saveData.settings.bronzeMedalsDisabled;
+        bool silverMedalsDisabled = saveData.settings.silverMedalsDisabled;
+        bool goldMedalsDisabled = saveData.settings.goldMedalsDisabled;
+
         if (targetTimeSetting < 1.0){
             return bronzeMedals * 12;
-        }else if (targetTimeSetting < 2.0){
-            int pointCount = (silverMedals + bronzeMedals) * 6;
-            return pointCount;
-        }else if (targetTimeSetting < 3.0){
-            int pointCount = (goldMedals + silverMedals + bronzeMedals) * 4;
-            return pointCount;
-        }else {
-            int pointCount = (authorMedals + goldMedals + silverMedals + bronzeMedals) * 3;
-            return pointCount;
+        }
+        else if (targetTimeSetting < 2.0){
+            if (bronzeMedalsDisabled) {
+                return silverMedals * 12;
+            }
+            else {
+                int pointCount = silverMedals * 6 + bronzeMedals * 6;
+                return pointCount;
+            }
+        }
+        else if (targetTimeSetting < 3.0){
+            if (bronzeMedalsDisabled){
+                if (silverMedalsDisabled){
+                    return goldMedals * 12;
+                }
+                int pointCount = goldMedals * 6 + silverMedals * 6;
+                return pointCount
+            }
+            else if (silverMedalsDisabled){
+                int pointCount = goldMedals * 6 + bronzeMedals * 6;
+                return pointCount
+            }
+            else {
+                int pointCount = goldMedals * 4 + silverMedals * 4 + bronzeMedals * 4;
+                return pointCount;
+            }
+        }
+        else {
+            if (bronzeMedalsDisabled){
+                if (silverMedalsDisabled){
+                    if (goldMedalsDisabled){
+                        return authorMedals * 10;
+                    }
+                    int pointCount = authorMedals * 6 + goldMedals * 6;
+                    return pointCount
+                }
+                if (goldMedalsDisabled){
+                    int pointCount = authorMedals * 6 + silverMedals * 6;
+                    return pointCount
+                }
+                int pointCount = authorMedals * 4 + goldMedals * 4 + silverMedals * 4;
+                return pointCount;
+            }
+            else if (silverMedalsDisabled){
+                if (goldMedalsDisabled) {
+                    int pointCount = authorMedals * 6 + bronzeMedals * 6;
+                    return pointCount
+                }
+                int pointCount = authorMedals * 4 + goldMedals * 4 + bronzeMedals * 4;
+                return pointCount;
+            }
+            else if (goldMedalsDisabled){
+                int pointCount = authorMedals * 4 + silverMedals * 4 + bronzeMedals * 4;
+                return pointCount;
+            }
+            else {
+                int pointCount = authorMedals*3 + goldMedals*3 + silverMedals*3 + bronzeMedals*3;
+                return pointCount;
+            }
         }
     }
 
