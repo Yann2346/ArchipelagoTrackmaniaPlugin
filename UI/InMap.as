@@ -72,7 +72,7 @@ void RenderMapUI(){
             UI::Separator();
 
             UI::NewLine();
-            RenderProgression(data.world.Length, vec2(165,0), 20);
+            RenderProgression(data.world.Length, vec2(165,0), "In map");
             UI::NewLine();
             UI::Separator();
             

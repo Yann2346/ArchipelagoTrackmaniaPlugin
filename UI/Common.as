@@ -110,8 +110,9 @@ void RenderScore(int score, int pointRequirement){
     UI::PopFont();
 }
 
-void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
+void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
     if (data.settings.progressionSystem == 0){
+        int sizeMedal = (menu == "In map") ? 50 : 60;
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
         float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -128,6 +129,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
 
     if (data.settings.progressionSystem == 1){
         if (targetTimeSetting < 1.0){
+            int sizeMedal = 60;
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
             float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -136,8 +138,9 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             MoveCursor(vec2(-medalOffset,-15.0));
         }
     
-        if (targetTimeSetting < 2.0){
+        else if (targetTimeSetting < 2.0){
             if (bronzeMedalsDisabled){
+                int sizeMedal = 60;
                 int count = data.items.GetProgressionMedalCount();
                 int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
                 float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -146,6 +149,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-medalOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 46 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.GetProgressionMedalCount();
 
@@ -167,7 +172,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
         }
-        if (targetTimeSetting < 3.0){
+        else if (targetTimeSetting < 3.0){
             if (bronzeMedalsDisabled){
                 if (silverMedalsDisabled){
                     int count = data.items.GetProgressionMedalCount();
@@ -178,6 +183,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-medalOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.GetProgressionMedalCount();
 
@@ -200,6 +207,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 }
             }
             else if (silverMedalsDisabled){
+                int sizeMedal = (menu == "In map") ? 46 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countGold = data.items.GetProgressionMedalCount();
 
@@ -221,6 +230,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 33 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countGold = data.items.GetProgressionMedalCount();
@@ -255,6 +266,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                         MoveCursor(vec2(-medalOffset,-15.0));
                     }
                     else {
+                        int sizeMedal = (menu == "In map") ? 46 : 60;
+
                         int countGold = data.items.goldMedals;
                         int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -277,6 +290,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     }
                 }
                 else if (goldMedalsDisabled){
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -298,6 +313,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 33 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.goldMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -322,6 +339,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             }
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled){
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countBronze = data.items.bronzeMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -343,6 +362,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 33 : 60;
+
                     int countBronze = data.items.bronzeMedals;
                     int countGold = data.items.goldMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -366,6 +387,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 }
             }
             else if (goldMedalsDisabled){
+                int sizeMedal = (menu == "In map") ? 33 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countAuthor = data.items.GetProgressionMedalCount();
@@ -388,6 +411,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 20 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countGold = data.items.goldMedals;
@@ -423,7 +448,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             MoveCursor(vec2(-medalOffset,-15.0));
         }
     
-        if (targetTimeSetting < 2.0){
+        else if (targetTimeSetting < 2.0){
             if (bronzeMedalsDisabled){
                 int count = data.items.GetProgressionMedalCount();
                 int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
@@ -433,6 +458,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-medalOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 46 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.GetProgressionMedalCount();
 
@@ -454,7 +481,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
         }
-        if (targetTimeSetting < 3.0){
+        else if (targetTimeSetting < 3.0){
             if (bronzeMedalsDisabled){
                 if (silverMedalsDisabled){
                     int count = data.items.GetProgressionMedalCount();
@@ -465,6 +492,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-medalOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.GetProgressionMedalCount();
 
@@ -487,6 +516,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 }
             }
             else if (silverMedalsDisabled){
+                int sizeMedal = (menu == "In map") ? 46 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countGold = data.items.GetProgressionMedalCount();
 
@@ -508,6 +539,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 33 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countGold = data.items.GetProgressionMedalCount();
@@ -542,6 +575,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                         MoveCursor(vec2(-medalOffset,-15.0));
                     }
                     else {
+                        int sizeMedal = (menu == "In map") ? 46 : 60;
+
                         int countGold = data.items.goldMedals;
                         int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -564,6 +599,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     }
                 }
                 else if (goldMedalsDisabled){
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -585,6 +622,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 33 : 60;
+
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.goldMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -609,6 +648,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
             }
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled){
+                    int sizeMedal = (menu == "In map") ? 46 : 60;
+
                     int countBronze = data.items.bronzeMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
 
@@ -630,6 +671,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
+                    int sizeMedal = (menu == "In map") ? 33 : 60;
+
                     int countBronze = data.items.bronzeMedals;
                     int countGold = data.items.goldMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -653,6 +696,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 }
             }
             else if (goldMedalsDisabled){
+                int sizeMedal = (menu == "In map") ? 33 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countAuthor = data.items.GetProgressionMedalCount();
@@ -675,6 +720,8 @@ void RenderProgression(uint nextSeries, vec2 viewSize, int sizeMedal){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
+                int sizeMedal = (menu == "In map") ? 20 : 60;
+
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
                 int countGold = data.items.goldMedals;
