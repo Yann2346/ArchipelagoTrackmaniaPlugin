@@ -111,7 +111,7 @@ void RenderScore(int score, int pointRequirement){
 }
 
 void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
-    int sizeMedal = 60
+    int sizeMedal = 60;
     if (data.settings.progressionSystem == 0){
         sizeMedal = (menu == "In map") ? 50 : 60;
         int count = data.items.GetProgressionMedalCount();
