@@ -113,7 +113,6 @@ void RenderScore(int score, int pointRequirement){
 void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
     int sizeMedal = 60;
     if (data.settings.progressionSystem == 0){
-        sizeMedal = (menu == "In map") ? 50 : 60;
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
         float medalOffset = (viewSize.x/2)-((sizeMedal+UI::MeasureString(""+count+"/"+total,fontHeaderSub).x)/2+16*UI::GetScale());
@@ -148,7 +147,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-medalOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 46 : 60;
+                sizeMedal = (menu == "In map") ? 45 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.GetProgressionMedalCount();
@@ -182,7 +181,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-medalOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.GetProgressionMedalCount();
@@ -206,7 +205,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 }
             }
             else if (silverMedalsDisabled){
-                sizeMedal = (menu == "In map") ? 46 : 60;
+                sizeMedal = (menu == "In map") ? 45 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countGold = data.items.GetProgressionMedalCount();
@@ -229,7 +228,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 33 : 60;
+                sizeMedal = (menu == "In map") ? 30 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
@@ -265,7 +264,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                         MoveCursor(vec2(-medalOffset,-15.0));
                     }
                     else {
-                        sizeMedal = (menu == "In map") ? 46 : 60;
+                        sizeMedal = (menu == "In map") ? 45 : 60;
 
                         int countGold = data.items.goldMedals;
                         int countAuthor = data.items.GetProgressionMedalCount();
@@ -289,7 +288,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     }
                 }
                 else if (goldMedalsDisabled){
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -312,7 +311,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 33 : 60;
+                    sizeMedal = (menu == "In map") ? 30 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.goldMedals;
@@ -338,7 +337,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
             }
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled){
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countBronze = data.items.bronzeMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -361,7 +360,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 33 : 60;
+                    sizeMedal = (menu == "In map") ? 30 : 60;
 
                     int countBronze = data.items.bronzeMedals;
                     int countGold = data.items.goldMedals;
@@ -386,7 +385,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 }
             }
             else if (goldMedalsDisabled){
-                sizeMedal = (menu == "In map") ? 33 : 60;
+                sizeMedal = (menu == "In map") ? 30 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
@@ -410,7 +409,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 20 : 60;
+                sizeMedal = (menu == "In map") ? 15 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
@@ -457,7 +456,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-medalOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 46 : 60;
+                sizeMedal = (menu == "In map") ? 45 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.GetProgressionMedalCount();
@@ -491,7 +490,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-medalOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.GetProgressionMedalCount();
@@ -515,7 +514,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 }
             }
             else if (silverMedalsDisabled){
-                sizeMedal = (menu == "In map") ? 46 : 60;
+                sizeMedal = (menu == "In map") ? 45 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countGold = data.items.GetProgressionMedalCount();
@@ -538,7 +537,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 33 : 60;
+                sizeMedal = (menu == "In map") ? 30 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
@@ -574,7 +573,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                         MoveCursor(vec2(-medalOffset,-15.0));
                     }
                     else {
-                        sizeMedal = (menu == "In map") ? 46 : 60;
+                        sizeMedal = (menu == "In map") ? 45 : 60;
 
                         int countGold = data.items.goldMedals;
                         int countAuthor = data.items.GetProgressionMedalCount();
@@ -598,7 +597,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     }
                 }
                 else if (goldMedalsDisabled){
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -621,7 +620,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 33 : 60;
+                    sizeMedal = (menu == "In map") ? 30 : 60;
 
                     int countSilver = data.items.silverMedals;
                     int countGold = data.items.goldMedals;
@@ -647,7 +646,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
             }
             else if (silverMedalsDisabled){
                 if (goldMedalsDisabled){
-                    sizeMedal = (menu == "In map") ? 46 : 60;
+                    sizeMedal = (menu == "In map") ? 45 : 60;
 
                     int countBronze = data.items.bronzeMedals;
                     int countAuthor = data.items.GetProgressionMedalCount();
@@ -670,7 +669,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                     MoveCursor(vec2(-scoreOffset,-15.0));
                 }
                 else{
-                    sizeMedal = (menu == "In map") ? 33 : 60;
+                    sizeMedal = (menu == "In map") ? 30 : 60;
 
                     int countBronze = data.items.bronzeMedals;
                     int countGold = data.items.goldMedals;
@@ -695,7 +694,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 }
             }
             else if (goldMedalsDisabled){
-                sizeMedal = (menu == "In map") ? 33 : 60;
+                sizeMedal = (menu == "In map") ? 30 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
@@ -719,7 +718,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
                 MoveCursor(vec2(-scoreOffset,-15.0));
             }
             else{
-                sizeMedal = (menu == "In map") ? 20 : 60;
+                sizeMedal = (menu == "In map") ? 15 : 60;
 
                 int countBronze = data.items.bronzeMedals;
                 int countSilver = data.items.silverMedals;
