@@ -112,6 +112,12 @@ void RenderScore(int score, int pointRequirement){
 
 void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
     int sizeMedal = 60;
+    float targetTimeSetting = data.settings.targetTimeSetting;
+
+    bool bronzeMedalsDisabled = data.settings.bronzeMedalsDisabled;
+    bool silverMedalsDisabled = data.settings.silverMedalsDisabled;
+    bool goldMedalsDisabled = data.settings.goldMedalsDisabled;
+    
     if (data.settings.progressionSystem == 0){
         int count = data.items.GetProgressionMedalCount();
         int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
@@ -121,13 +127,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
         MoveCursor(vec2(-medalOffset,-15.0));
     }
 
-    float targetTimeSetting = data.settings.targetTimeSetting;
-
-    bool bronzeMedalsDisabled = data.settings.bronzeMedalsDisabled;
-    bool silverMedalsDisabled = data.settings.silverMedalsDisabled;
-    bool goldMedalsDisabled = data.settings.goldMedalsDisabled;
-
-    if (data.settings.progressionSystem == 1){
+    else if (data.settings.progressionSystem == 1){
         if (targetTimeSetting < 1.0){
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
@@ -436,7 +436,7 @@ void RenderProgression(uint nextSeries, vec2 viewSize, string menu){
         }
     }
 
-    if (data.settings.progressionSystem == 2){
+    else if (data.settings.progressionSystem == 2){
         if (targetTimeSetting < 1.0){
             int count = data.items.GetProgressionMedalCount();
             int total = (nextSeries < data.world.Length) ? data.world[nextSeries].medalRequirement : data.victoryRequirement;
