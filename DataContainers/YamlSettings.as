@@ -54,10 +54,10 @@ class YamlSettings{
         if (!bronzeMedalsDisabled || targetTimeSetting < 1){
             medalsToDo += 1;
         }
-        if ((targetTimeSetting >= 1 && !silverMedalsDisabled) || (2 > targetTimeSetting >= 1)){
+        if ((targetTimeSetting >= 1 && !silverMedalsDisabled) || (2 > targetTimeSetting && targetTimeSetting >= 1)){
             medalsToDo += 1;
         }
-        if ((targetTimeSetting >= 2 && !goldMedalsDisabled) || (3 > targetTimeSetting >= 2)){
+        if ((targetTimeSetting >= 2 && !goldMedalsDisabled) || (3 > targetTimeSetting && targetTimeSetting >= 2)){
             medalsToDo += 1;
         }
         if (targetTimeSetting >= 3) {
@@ -83,19 +83,19 @@ class YamlSettings{
         }
         else {
             if (!DoingBronze()){
-                bronzeDisabled = False;
+                bronzeDisabled = false;
                 checksToDo += 1;
             }
             if (checksToDo < medalsToDo && !DoingSilver()){
-                silverDisabled = False;
+                silverDisabled = false;
                 checksToDo += 1;
             }
             if (checksToDo < medalsToDo && !DoingGold()){
-                goldDisabled = False;
+                goldDisabled = false;
                 checksToDo += 1;
             }
             if (checksToDo < medalsToDo && !DoingAuthor()){
-                authorDisabled = False;
+                authorDisabled = false;
             }
             return;
         }
@@ -144,8 +144,8 @@ class YamlSettings{
         silverDisabled = JsonGetAsBool(json, "silverDisabled");
         goldDisabled = JsonGetAsBool(json, "goldDisabled");
         authorDisabled = JsonGetAsBool(json, "authorDisabled");
-        goldMedalsDisabled = JsonGetAsBool(json, "DisableGoldMedals");
-        silverMedalsDisabled = JsonGetAsBool(json, "DisableSilverMedals");
-        bronzeMedalsDisabled = JsonGetAsBool(json, "DisableBronzeMedals");
+        goldMedalsDisabled = JsonGetAsBool(json, "goldMedalsDisabled");
+        silverMedalsDisabled = JsonGetAsBool(json, "silverMedalsDisabled");
+        bronzeMedalsDisabled = JsonGetAsBool(json, "bronzeMedalsDisabled");
     }
 }
