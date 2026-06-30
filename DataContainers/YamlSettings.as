@@ -25,7 +25,7 @@ class YamlSettings{
             }else{
                 ReadJsonV1_2(json);
             }
-            if progressionSystem == 1 || progressionSystem == 2{
+            if (progressionSystem == 1 || progressionSystem == 2){
                 UpdateChecksToDo();
             }
         } catch {
@@ -54,10 +54,10 @@ class YamlSettings{
         if (!bronzeMedalsDisabled || targetTimeSetting < 1){
             medalsToDo += 1;
         }
-        if (targetTimeSetting >= 1 && !silverMedalsDisabled) || (2 > targetTimeSetting >= 1){
+        if ((targetTimeSetting >= 1 && !silverMedalsDisabled) || (2 > targetTimeSetting >= 1)){
             medalsToDo += 1;
         }
-        if (targetTimeSetting >= 2 && !goldMedalsDisabled) || (3 > targetTimeSetting >= 2){
+        if ((targetTimeSetting >= 2 && !goldMedalsDisabled) || (3 > targetTimeSetting >= 2)){
             medalsToDo += 1;
         }
         if (targetTimeSetting >= 3) {
@@ -65,24 +65,24 @@ class YamlSettings{
         }
 
         int checksToDo = 0;
-        if DoingBronze(){
+        if (DoingBronze()){
             checksToDo += 1;
         }
-        if DoingSilver(){
+        if (DoingSilver()){
             checksToDo += 1;
         }
-        if DoingGold(){
+        if (DoingGold()){
             checksToDo += 1;
         }
-        if DoingAuthor(){
+        if (DoingAuthor()){
             checksToDo += 1;
         }
 
-        if checksToDo >= medalsToDo{
+        if (checksToDo >= medalsToDo){
             return;
         }
         else {
-            if !DoingBronze(){
+            if (!DoingBronze()){
                 bronzeDisabled = False;
                 checksToDo += 1;
             }
