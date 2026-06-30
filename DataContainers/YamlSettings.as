@@ -25,6 +25,9 @@ class YamlSettings{
             }else{
                 ReadJsonV1_2(json);
             }
+            if progressionSystem == 1 || progressionSystem == 2{
+                UpdateChecksToDo();
+            }
         } catch {
             Log::Warn("Error parsing YamlSettings"+ "\nReason: " + getExceptionInfo());
         }
@@ -44,6 +47,58 @@ class YamlSettings{
 
     bool DoingAuthor(){
         return targetTimeSetting >= 3 && !authorDisabled;
+    }
+
+    void UpdateChecksToDo(){
+        int medalsToDo = 0;
+        if (!bronzeMedalsDisabled || targetTimeSetting < 1){
+            medalsToDo += 1;
+        }
+        if (targetTimeSetting >= 1 && !silverMedalsDisabled) || (2 > targetTimeSetting >= 1){
+            medalsToDo += 1;
+        }
+        if (targetTimeSetting >= 2 && !goldMedalsDisabled) || (3 > targetTimeSetting >= 2){
+            medalsToDo += 1;
+        }
+        if (targetTimeSetting >= 3) {
+            medalsToDo += 1;
+        }
+
+        int checksToDo = 0;
+        if DoingBronze(){
+            checksToDo += 1;
+        }
+        if DoingSilver(){
+            checksToDo += 1;
+        }
+        if DoingGold(){
+            checksToDo += 1;
+        }
+        if DoingAuthor(){
+            checksToDo += 1;
+        }
+
+        if checksToDo >= medalsToDo{
+            return;
+        }
+        else {
+            if !DoingBronze(){
+                bronzeDisabled = False;
+                checksToDo += 1;
+            }
+            if (checksToDo < medalsToDo && !DoingSilver()){
+                silverDisabled = False;
+                checksToDo += 1;
+            }
+            if (checksToDo < medalsToDo && !DoingGold()){
+                goldDisabled = False;
+                checksToDo += 1;
+            }
+            if (checksToDo < medalsToDo && !DoingAuthor()){
+                authorDisabled = False;
+            }
+            return;
+        }
     }
 
     Json::Value ToJson() {
