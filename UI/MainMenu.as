@@ -145,13 +145,13 @@ void RenderMainMenu(){
 
                 uint nextSeries = i+1;
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
+                UI::NewLine();
                 RenderProgression(nextSeries, viewSize, "Main menu");
+                UI::NewLine();
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
-                MoveCursor(vec2(0,-32));
                 if (nextSeries >= data.world.Length){
                     RenderVictory(viewSize);
-
                 }
             }
             UI::EndChild();
@@ -291,7 +291,9 @@ void RenderMainMenuThumbnail(){
 
                 uint nextSeries = i+1;
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
+                UI::NewLine();
                 RenderProgression(nextSeries, viewSize, "Main menu");
+                UI::NewLine();
                 RenderSeriesLine(nextSeries,viewSize,40,4,8);
                 MoveCursor(vec2(0,manMarn));
                 if (nextSeries >= data.world.Length){
@@ -358,6 +360,16 @@ void RenderSeriesLine(uint seriesI, vec2 viewSize, float height, float width, fl
 
     int total = (seriesI < data.world.Length) ? data.world[seriesI].medalRequirement : data.victoryRequirement;
     int count = data.items.GetProgressionMedalCount();
+
+    if (data.settings.progressionSystem == 1){
+        total = total * 12;
+        count = data.items.GetEqualizedPointCount();
+    }
+    if (data.settings.progressionSystem == 2){
+        total = total * 10;
+        count = data.items.GetPointCount();
+    }
+
     vec4 color = vec4(0.35,0.35,0.35,1.0);
     if (count >= total){
         color = vec4(0,0.96,0.12,0.7);
