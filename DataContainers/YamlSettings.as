@@ -64,7 +64,7 @@ class YamlSettings{
             medalsToDo += 1;
         }
 
-        int checksToDo = 0;
+        int checksToDo = 1; // the target check is always a check to do
         if (DoingBronze()){
             checksToDo += 1;
         }
