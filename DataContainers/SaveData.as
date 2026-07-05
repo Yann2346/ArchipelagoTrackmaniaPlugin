@@ -120,7 +120,7 @@ class SaveData{
     Json::Value ToJson(){
         Json::Value json = Json::Object();
         try {
-            json["hasGoal"] = hasGoal? "true" : "false";
+            json["hasGoal"] == hasGoal ? "true" : "false";
             json["settings"] = settings.ToJson();
             json["items"] = items.ToJson();
             json["locations"] = locations.ToJson();

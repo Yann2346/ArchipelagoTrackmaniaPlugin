@@ -141,23 +141,29 @@ void ProcessReceivedItems (Json::Value@ json){
         data.items.AddItem(items[i]["item"]);
     }
     //check if we won
-    if ((data.settings.progressionSystem == 0) && (!data.hasGoal && data.items.GetProgressionMedalCount() >= data.victoryRequirement)){
+    if (data.settings.progressionSystem == 0){
+        if (!data.hasGoal && data.items.GetProgressionMedalCount() >= data.victoryRequirement){
         SendStatusUpdate(ClientStatus::CLIENT_GOAL);
         data.hasGoal = true;
         saveFile.Save(data);//removes thumbnails from save file
         startnew(Celebrate);
+        }
     }
-    else if ((data.settings.progressionSystem == 1) && (!data.hasGoal && data.items.GetEqualizedPointCount() >= data.victoryRequirement * 12)){
+    else if (data.settings.progressionSystem == 1) {
+        if (!data.hasGoal && data.items.GetEqualizedPointCount() >= data.victoryRequirement * 12){
         SendStatusUpdate(ClientStatus::CLIENT_GOAL);
         data.hasGoal = true;
         saveFile.Save(data);//removes thumbnails from save file
         startnew(Celebrate);
+        }
     }
-    else if ((data.settings.progressionSystem == 2) && (!data.hasGoal && data.items.GetPointCount() >= data.victoryRequirement * 10)){
+    else if (data.settings.progressionSystem == 2) {
+        if (!data.hasGoal && data.items.GetPointCount() >= data.victoryRequirement * 10){
         SendStatusUpdate(ClientStatus::CLIENT_GOAL);
         data.hasGoal = true;
         saveFile.Save(data);//removes thumbnails from save file
         startnew(Celebrate);
+        }
     }
     else {
         if (!data.hasGoal && data.items.GetProgressionMedalCount() >= data.victoryRequirement){
